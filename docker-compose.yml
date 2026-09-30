@@ -1,6 +1,6 @@
 services:
   db:
-    image: mariadb:10.6
+    image: mariadb:latest
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: fatec_password
