@@ -7,8 +7,34 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  test:
+    name: Testes e Validações
     runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Verificar estrutura de arquivos
+        run: |
+          echo "Verificando existência dos arquivos essenciais..."
+          test -f index.html || (echo "Erro: index.html não encontrado" && exit 1)
+          test -f style.css || (echo "Erro: style.css não encontrado" && exit 1)
+          test -f img/bolo.jpg || (echo "Erro: img/bolo.jpg não encontrada" && exit 1)
+          echo "Todos os arquivos essenciais estão presentes!"
+
+      - name: Validar Sintaxe do HTML (HTMLHint)
+        run: npx --yes htmlhint index.html
+
+  build:
+    name: Build e Deploy Docker
+    runs-on: ubuntu-latest
+    needs: test
 
     steps:
       - name: Checkout do código
