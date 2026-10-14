@@ -40,4 +40,4 @@ jobs:
           script: |
             docker pull ${{ secrets.DOCKER_USERNAME }}/bolo-iec:latest
             docker rm -f bolo-iec || true
-            docker run -d --name bolo-iec -p 80:89 --restart unless-stopped ${{ secrets.DOCKER_USERNAME }}/bolo-iec:latest
+            docker run -d --name bolo-iec -p 20:25 --restart unless-stopped ${{ secrets.DOCKER_USERNAME }}/bolo-iec:latest
