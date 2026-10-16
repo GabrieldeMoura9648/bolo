@@ -43,6 +43,6 @@ jobs:
           script: |
             docker pull GabrieldeMoura9648/bolo:latest
             docker rm -f bolo app-docker-aula || true
-            docker run -d --name bolo -p 8098:80 --restart unless-stopped GabrieldeMoura9648/bolo:latest
+            docker run -d --name bolo -p 89:80 --restart unless-stopped GabrieldeMoura9648/bolo:latest
  
  
