@@ -1,10 +1,6 @@
-FROM nginx:alpine
+FROM nginx:1.27-alpine
 
-# Copia todos os arquivos da pasta atual para a pasta pública do Nginx
-COPY . /usr/share/nginx/html
+COPY app/ /usr/share/nginx/html
+COPY public/ /usr/share/nginx/html/public/
 
-# Expõe a porta 80 do container
 EXPOSE 80
-
-# Inicia o servidor Nginx
-CMD ["nginx", "-g", "daemon off;"]
